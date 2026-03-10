@@ -82,13 +82,40 @@ export default async function sitemap() {
  
   // Categories for dynamic pages - Indonesian keywords
   const categories = [
-    // Main categories
-    'indonesian', 'asian', 'japanese', 'milf', 'teen', 'big-tits', 
-    'anal', 'blowjob', 'hardcore', 'amateur', 'massage', 'lesbian',
-    'threesome', 'group-sex', 'public', 'office', 'hotel', 'vr-porn',
-    // Indonesian keywords
+    // Main Eporner categories
+    'all', '4k-porn', 'anal', 'teens', 'pov-porn', 'threesome', 'japanese', 
+    'lesbians', 'asian', 'redhead', 'vr-porn', 'mature', 'interracial', 
+    'big-tits', 'milf', 'hardcore', 'group-sex', 'amateur', 'orgy', 'gay',
+    // Additional popular categories
+    'blowjob', 'handjob', 'foot-fetish', 'voyeur', 'public', 'office', 
+    'hotel', 'casting', 'hd-porn', 'verified-amateurs', 'pornstar', 
+    'celebrity', 'ebony', 'latina', 'whitegirl', 'bbw', 'skinny',
+    // Asian categories
     'indo', 'hijab', 'jepang', 'malaysia', 'thailand', 'vietnam',
-    'filipina', 'korea', 'china', 'singapore'
+    'filipina', 'korea', 'china', 'singapore', 'taiwan', 'hong-kong',
+    // Niche categories
+    'mom', 'stepmom', 'stepdaughter', 'sister', 'babysitter', 'maid',
+    'teacher', 'student', 'doctor', 'nurse', 'police', 'military',
+    'fetish', 'bdsm', 'domination', 'submission', 'latex', 'leather',
+    'Uniform', 'cosplay', 'cartoon', 'hentai', 'anime', '3d',
+    'compilation', 'best-of', 'most-viewed', 'top-rated', 'longest',
+    // More specific
+    'teen-18-19', 'young', 'college', 'brunette', 'blonde', 'redhead',
+    'piercing', 'tattoo', 'natural-tits', 'fake-tits', 'big-ass', 
+    'small-tits', 'huge-tits', 'anal-double', 'double-penetration',
+    'gagging', 'deep-throat', 'creampie', 'facial', 'cumshot', 'internal',
+    'squirt', 'gspot', 'toys', 'dildo', 'vibrator', 'massage',
+    'striptease', 'webcam', 'live', 'vr', '4k', 'hd', 'vr-porn',
+    // Indian & Pakistani
+    'india', 'pakistani', 'bollywood', 'hindi',
+    // Arabic/Middle East
+    'arab', 'middle-east', 'egyptian',
+    // European
+    'european', 'british', 'french', 'german', 'italian', 'russian',
+    // South American
+    'brazilian', 'colombian', 'argentinian', 'mexican',
+    // Extra
+    'solo', 'masturbation', 'teen', 'young-teen', 'old-young'
   ]
  
   const staticRoutes = staticPages.map((route) => ({
