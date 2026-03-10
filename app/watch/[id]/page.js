@@ -220,8 +220,8 @@ export default async function WatchPage({ params }) {
 
       {/* Video Player - Eporner style */}
       <div className="mb-6">
-        <div className="bg-black rounded-lg overflow-hidden shadow-xl">
-          <div className="aspect-video relative">
+        <div className="bg-black rounded-lg overflow-hidden shadow-xl relative">
+          <div className="aspect-video relative" style={{ zIndex: 10 }}>
             {video.embed ? (
               <iframe
                 src={video.embed}

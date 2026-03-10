@@ -208,3 +208,70 @@ input, textarea, select {
 .pwa-install-btn {
   @apply bg-primary hover:bg-primary/80 text-white font-medium py-2 px-4 rounded-lg transition-colors;
 }
+
+/* Ad overlay protection - prevent ads from covering video player */
+/* Ensure video player has higher z-index */
+.aspect-video {
+  position: relative;
+  z-index: 10;
+}
+
+.aspect-video iframe {
+  position: relative;
+  z-index: 10;
+}
+
+/* Mobile ad protection - prevent overlay ads from blocking video */
+@media (max-width: 768px) {
+  /* Limit ad height on mobile */
+  [class*="ads"],
+  [id*="ads"],
+  [class*="ad-"],
+  [id*="ad-"],
+  iframe[src*="ads"],
+  iframe[src*="ad"],
+  div[style*="position: fixed"][style*="z-index"],
+  div[style*="position:fixed"][style*="z-index"] {
+    max-height: 50vh !important;
+    overflow: hidden !important;
+  }
+  
+  /* Push ads below content instead of overlaying */
+  body > div[style*="position: fixed"],
+  body > div[style*="position:fixed"] {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+  
+  /* Add safe area for video player */
+  .aspect-video {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Responsive banner ad container */
+.ad-container {
+  width: 100%;
+  max-height: 250px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1a1a1a;
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .ad-container {
+    max-height: 200px;
+    min-height: 100px;
+  }
+}
+
+/* Ensure ads don't cover header */
+header {
+  z-index: 50;
+}
