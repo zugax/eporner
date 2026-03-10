@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import SearchBox from '@/components/SearchBox'
 import { useState } from 'react'
+import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration'
+import PWAInstallPrompt from '@/components/PWAInstallPrompt'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,7 +15,35 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
+      <head>
+        {/* Favicon */}
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="apple-touch-icon" href="/icon.svg" />
+        
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#e50914" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="AREABOKEP" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPWJ825RHX"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NPWJ825RHX');
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
+        <ServiceWorkerRegistration />
+        <PWAInstallPrompt />
         {/* Header */}
         <header className="sticky top-0 z-50 bg-gradient-to-b from-dark to-dark/95 backdrop-blur-sm border-b border-gray-800 shadow-lg">
           <div className="max-w-7xl mx-auto px-4">

@@ -1,0 +1,47 @@
+{
+  "name": "AREA BOKEP",
+  "short_name": "AREABOKEP",
+  "description": "Streaming Video Bokep Indonesia Gratis - Watch HD porn videos online",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#e50914",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["entertainment", "video"],
+  "shortcuts": [
+    {
+      "name": "Trending",
+      "short_name": "Trending",
+      "url": "/trending",
+      "description": "Watch trending videos"
+    },
+    {
+      "name": "Latest",
+      "short_name": "Latest",
+      "url": "/latest",
+      "description": "Latest videos"
+    },
+    {
+      "name": "Categories",
+      "short_name": "Categories",
+      "url": "/categories",
+      "description": "Browse categories"
+    }
+  ],
+  "prefer_related_applications": false
+}

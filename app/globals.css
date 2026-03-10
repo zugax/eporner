@@ -187,3 +187,24 @@ input, textarea, select {
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+/* PWA Install Prompt Animation */
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+/* PWA Install button */
+.pwa-install-btn {
+  @apply bg-primary hover:bg-primary/80 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+}

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
  
 export const metadata = {
-  metadataBase: new URL('https://areabokep.me'),
+  metadataBase: new URL('https://pornxsearch.dpdns.org'),
   title: {
     default: 'AREA BOKEP - Streaming Video Bokep Indonesia Gratis',
     template: '%s | AREA BOKEP'
@@ -17,16 +17,16 @@ export const metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: 'https://areabokep.me',
+    canonical: 'https://pornxsearch.dpdns.org',
     languages: {
-      'en-US': 'https://areabokep.me',
-      'id': 'https://areabokep.me',
+      'en-US': 'https://pornxsearch.dpdns.org',
+      'id': 'https://pornxsearch.dpdns.org',
     },
   },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    url: 'https://areabokep.me',
+    url: 'https://pornxsearch.dpdns.org',
     siteName: 'AREA BOKEP',
     title: 'AREA BOKEP - Streaming Video Bokep Indonesia Gratis',
     description: 'Nonton video bokep Indonesia, jav, dan western gratis dalam kualitas HD. Update harian dengan koleksi video porn terupdate.',
@@ -62,7 +62,7 @@ export const metadata = {
 }
  
 export default async function sitemap() {
-  const baseUrl = 'https://areabokep.me'
+  const baseUrl = 'https://pornxsearch.dpdns.org'
  
   // Static pages
   const staticPages = [
