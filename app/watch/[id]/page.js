@@ -59,43 +59,6 @@ export default async function WatchPage({ params }) {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      {/* JSON-LD Schema for Video - using dangerouslySetInnerHTML */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            "name": video.title,
-            "description": video.description || `Watch ${video.title} - Free HD porn video`,
-            "thumbnailUrl": video.thumbs?.[0] || video.thumbnail,
-            "uploadDate": video.added ? new Date(video.added).toISOString() : new Date().toISOString(),
-            "duration": video.duration ? `PT${Math.floor(video.duration / 60)}M${video.duration % 60}S` : "PT0M0S",
-            "contentUrl": video.epornerUrl || `https://pornxsearch.dpdns.org/watch/${id}`,
-            "embedUrl": video.embed || `https://pornxsearch.dpdns.org/watch/${id}`,
-            "interactionStatistic": {
-              "@type": "InteractionCounter",
-              "interactionType": "https://schema.org/WatchAction",
-              "userInteractionCount": video.views || 0
-            },
-            "keywords": video.tags?.join(', ') || video.categories?.join(', '),
-            "author": {
-              "@type": "Person",
-              "name": video.pornstars?.[0] || "Unknown"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "PornXSearch",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://pornxsearch.dpdns.org/icon.svg"
-              }
-            }
-          })
-        }}
-      />
-      
-      <div className="container mx-auto px-4 py-6">
       {/* Video Player - Eporner style */}
       <div className="mb-6">
         <div className="bg-black rounded-lg overflow-hidden shadow-xl">

@@ -1,10 +1,9 @@
 import { headers } from 'next/headers';
 
-export async function robots() {
+export default async function robots() {
   const headersList = await headers();
   const host = headersList.get('host') || headersList.get('x-forwarded-host') || 'pornxsearch.dpdns.org';
-  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'https';
-  const siteUrl = `${protocol}://${host}`;
+  const siteUrl = `https://${host}`;
   
   return {
     rules: [
