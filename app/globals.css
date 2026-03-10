@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 10, 10, 10;
+  /* Eporner-inspired colors */
+  --eporner-red: #AE0000;
+  --eporner-blue: #003399;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #AE0000;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #DC143C;
+}
+
+/* Selection color */
+::selection {
+  background: #AE0000;
+  color: white;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid #AE0000;
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Link styles */
+a {
+  @apply transition-colors duration-200;
+}
+
+/* Button base styles */
+button {
+  @apply transition-all duration-200;
+}
+
+/* Image hover effects */
+img {
+  @apply transition-transform duration-300;
+}
+
+/* Video thumbnail hover */
+.video-thumb {
+  @apply transition-all duration-300 ease-out;
+}
+
+.video-thumb:hover {
+  transform: scale(1.05);
+}
+
+/* Card hover effect */
+.card-hover {
+  @apply transition-all duration-300 ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(174, 0, 0, 0.2);
+}
+
+/* Rating colors */
+.rating-high {
+  @apply text-green-400;
+}
+
+.rating-medium {
+  @apply text-yellow-400;
+}
+
+.rating-low {
+  @apply text-orange-400;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #AE0000 0%, #8B0000 100%);
+}
+
+.gradient-dark {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+}
+
+/* Overlay effects */
+.overlay-dark {
+  @apply bg-gradient-to-t from-black/80 via-black/40 to-transparent;
+}
+
+/* Play button animation */
+.play-button {
+  @apply transition-transform duration-300 ease-out;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
+}
+
+/* Badge styles */
+.badge-hd {
+  @apply bg-red-600 text-white px-2 py-0.5 rounded text-xs font-bold uppercase tracking-wider;
+}
+
+.badge-rating {
+  @apply bg-black/60 text-white px-2 py-0.5 rounded text-xs font-medium;
+}
+
+.badge-duration {
+  @apply bg-black/80 text-white px-2 py-0.5 rounded text-xs font-medium;
+}
+
+/* Category pill */
+.category-pill {
+  @apply bg-dark-secondary text-gray-300 px-4 py-1.5 rounded-full text-sm hover:bg-primary hover:text-white transition-all duration-200;
+}
+
+/* Input styles */
+input, textarea, select {
+  @apply bg-dark-secondary border border-gray-700 rounded-lg px-4 py-2 text-white focus:border-primary focus:ring-1 focus:ring-primary transition-all;
+}
+
+/* Container max width */
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* Grid patterns */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .video-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .video-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .video-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
