@@ -51,6 +51,20 @@ s.referrerPolicy = 'no-referrer-when-downgrade';
 l.parentNode.insertBefore(s, l);
 })({})`}
       </Script>
+
+      {/* MultiTag VAST Ad */}
+      <Script id="vast-ad-search" strategy="afterInteractive">
+        {`(function(vtbp){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = vtbp || {};
+s.src = "\\/\\/frugal-sex.com\\/bTXVVms.dBGilW0iYnWkce\\/peAmP9HuzZlUvl\\/kdP\\/TcYo4-NET\\/Yw4\\/OuTxMDtlNrjsgp1\\/NejmgN5xNawC";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})`}
+      </Script>
     </div>
   )
 }
