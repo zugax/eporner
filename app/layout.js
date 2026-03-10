@@ -27,6 +27,19 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="AREABOKEP" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPWJ825RHX"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NPWJ825RHX');
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <ServiceWorkerRegistration />
