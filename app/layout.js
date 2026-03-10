@@ -41,6 +41,42 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        
+        {/* Video Ad Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(tqed){
+                var d = document,
+                    s = d.createElement('script'),
+                    l = d.scripts[d.scripts.length - 1];
+                s.settings = tqed || {};
+                s.src = "\\/\\/frugal-sex.com\\/b-XeV\\/s.dvGElW0LYwWhcV\\/Xe-mg9lu\\/Z\\/UjlikaP\\/T\\/Yn4aNmT\\/YO4nOFTxMHtmNbjpgz1ANFjJgQ5\\/NXwp";
+                s.async = true;
+                s.referrerPolicy = 'no-referrer-when-downgrade';
+                l.parentNode.insertBefore(s, l);
+              })({})
+            `,
+          }}
+        />
+        
+        {/* Banner Ad Script */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(cjx){
+                var d = document,
+                    s = d.createElement('script'),
+                    l = d.scripts[d.scripts.length - 1];
+                s.settings = cjx || {};
+                s.src = "\\/\\/frugal-sex.com\\/bwXaVMssd.GdlC0EYgWbcW\\/QexmL9fuYZ\\/U\\/l-kDPeTPYm4dN-TsYz5zMxDlkstQNZj\\/gV1VNgjGkCxGM\\/wF";
+                s.async = true;
+                s.referrerPolicy = 'no-referrer-when-downgrade';
+                l.parentNode.insertBefore(s, l);
+              })({})
+            `,
+          }}
+        />
       </head>
       <body className={inter.className}>
         <ServiceWorkerRegistration />
