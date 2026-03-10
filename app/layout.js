@@ -26,57 +26,7 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="AREABOKEP" />
-        <meta name="40208eac0599d7be05ed51e95bc07d831bfd94da" content="40208eac0599d7be05ed51e95bc07d831bfd94da" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-        
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NPWJ825RHX"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-NPWJ825RHX');
-            `,
-          }}
-        />
-        
-        {/* Video Ad Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(tqed){
-                var d = document,
-                    s = d.createElement('script'),
-                    l = d.scripts[d.scripts.length - 1];
-                s.settings = tqed || {};
-                s.src = "\\/\\/frugal-sex.com\\/b-XeV\\/s.dvGElW0LYwWhcV\\/Xe-mg9lu\\/Z\\/UjlikaP\\/T\\/Yn4aNmT\\/YO4nOFTxMHtmNbjpgz1ANFjJgQ5\\/NXwp";
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                l.parentNode.insertBefore(s, l);
-              })({})
-            `,
-          }}
-        />
-        
-        {/* Banner Ad Script */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(cjx){
-                var d = document,
-                    s = d.createElement('script'),
-                    l = d.scripts[d.scripts.length - 1];
-                s.settings = cjx || {};
-                s.src = "\\/\\/frugal-sex.com\\/bwXaVMssd.GdlC0EYgWbcW\\/QexmL9fuYZ\\/U\\/l-kDPeTPYm4dN-TsYz5zMxDlkstQNZj\\/gV1VNgjGkCxGM\\/wF";
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                l.parentNode.insertBefore(s, l);
-              })({})
-            `,
-          }}
-        />
       </head>
       <body className={inter.className}>
         <ServiceWorkerRegistration />
