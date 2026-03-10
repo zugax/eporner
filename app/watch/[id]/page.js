@@ -364,6 +364,34 @@ export default async function WatchPage({ params }) {
           </div>
         </section>
       )}
+
+      {/* Video Slider / Carousel */}
+      <section className="mt-10">
+        <h2 className="text-xl font-semibold text-white mb-5 pb-3 border-b border-gray-800">
+          <i className="fas fa-film mr-2 text-primary"></i>Trending Videos
+        </h2>
+        <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-primary scrollbar-track-dark">
+          {relatedVideos.slice(0, 10).map((v) => (
+            <div key={v.id} className="flex-shrink-0 w-64">
+              <VideoCard video={v} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Popunder Ad */}
+      <Script id="popunder-ad-watch" strategy="afterInteractive">
+        {`(function(zcath){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = zcath || {};
+s.src = "\/\/perfumed-development.com\/clDw9w6.bZ2V5flBSWWzQ\/9\/NxjRg\/1zNdjqgR4NNESp0S2qO\/DhUn2POwDxg\/5y";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})`}
+      </Script>
     </div>
   )
 }
