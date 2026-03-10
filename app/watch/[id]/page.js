@@ -364,62 +364,6 @@ export default async function WatchPage({ params }) {
           </div>
         </section>
       )}
-
-      {/* In-Page Push Ad */}
-      <Script id="push-ad-watch" strategy="afterInteractive">
-        {`(function(lxye){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = lxye || {};
-s.src = "\/\/swift-weird.com\/bTX\/Vgs.duGwl\/0\/YuWVcf\/xeOmD9XuUZMUBl-kUPxTnYf4VNHDzcD4iMbTocLtWNcjQgq0rNtzfggybM\/QG";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`}
-      </Script>
-
-      {/* Popunder Ad */}
-      <Script id="popunder-ad-watch" strategy="afterInteractive">
-        {`(function(mbvwp){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = mbvwp || {};
-s.src = "\/\/perfumed-development.com\/cLD.9R6EbP2Q5clTSZWQQ_9gN\/jVg\/1\/N-jVgV4\/NPSW0E2vOSD_UT2qO\/Dkg\/5S";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`}
-      </Script>
-
-      {/* Banner Ad */}
-      <Script id="banner-ad-watch" strategy="afterInteractive">
-        {`(function(cobz){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = cobz || {};
-s.src = "\/\/swift-weird.com\/b.XzVksKdEGWlP0UYyWZcS\/Uermg9nuVZ_Udl\/k\/PcTGY_z\/NDjOgZzHNsjWYRtuNJj\/Mk2tOHDLMg2NNswP";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`}
-      </Script>
-
-      {/* Multitag VAST Ad */}
-      <Script id="vast-ad-watch" strategy="afterInteractive">
-        {`(function(asoi){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = asoi || {};
-s.src = "\/\/swift-weird.com\/bNXFV\/s.dFG\/lJ0tYLWGcx\/Ce\/mu9Gu\/ZzUxlwkYPNTfYPz\/NojxgKzHMRzrYptLN\/jUMF2\/OLDQM\/zbNPwy";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})`}
-      </Script>
     </div>
   )
 }
