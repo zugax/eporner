@@ -76,6 +76,30 @@ export async function generateMetadata({ params }) {
   const categoryName = categoryNames[categoryId] || category?.name || 'Category'
   const categoryDesc = categoryDescriptions[categoryId] || `Watch ${categoryName} videos on AREA BOKEP`
   
+  const baseUrl = 'https://pornxsearch.dpdns.org'
+  const categoryUrl = `${baseUrl}/category/${categoryId}`
+
+  // Structured data for category page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": `${categoryName} - Video Bokep Gratis HD`,
+    "description": categoryDesc,
+    "url": categoryUrl,
+    "publisher": {
+      "@type": "Organization",
+      "name": "AREA BOKEP"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": categories?.map((cat, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "url": `${baseUrl}/category/${cat.id}`
+      }))
+    }
+  }
+  
   return {
     title: `${categoryName} - Video Bokep Gratis HD | AREA BOKEP`,
     description: categoryDesc,
@@ -91,11 +115,20 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: `${categoryName} - Video Bokep Gratis HD | AREA BOKEP`,
       description: categoryDesc,
+      url: categoryUrl,
+      type: 'website'
+    },
+    alternates: {
+      canonical: categoryUrl
+    },
+    other: {
+      'script:ld+json': JSON.stringify(structuredData)
     }
   }
 }
 
 export default async function CategoryPage({ params, searchParams }) {
+  const baseUrl = 'https://pornxsearch.dpdns.org'
   const categories = await getCategories()
   const categoryId = params.id
   const category = categories?.find(c => c.id === categoryId)
@@ -114,6 +147,57 @@ export default async function CategoryPage({ params, searchParams }) {
 
   return (
     <div className="container mx-auto px-4 py-6">
+      {/* JSON-LD Structured Data for Category */}
+      <Script
+        id="category-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": `${categoryName} - Video Bokep Gratis HD`,
+            "description": categoryDesc,
+            "url": `${baseUrl}/category/${categoryId}`,
+            "publisher": {
+              "@type": "Organization",
+              "name": "AREA BOKEP"
+            }
+          })
+        }}
+      />
+
+      {/* BreadcrumbList Schema */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": baseUrl
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Categories",
+                "item": `${baseUrl}/categories`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": categoryName,
+                "item": `${baseUrl}/category/${categoryId}`
+              }
+            ]
+          })
+        }}
+      />
+
       {/* Category Header */}
       <div className="mb-8">
         <h1 className="text-2xl md:text-3xl font-bold text-white mb-3 flex items-center">

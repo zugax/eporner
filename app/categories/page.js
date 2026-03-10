@@ -33,7 +33,7 @@ export default async function CategoriesPage() {
               {cat.thumbs && cat.thumbs[0] ? (
                 <Image
                   src={cat.thumbs[0]}
-                  alt={cat.name}
+                  alt={`${cat.name} videos - Watch free ${cat.name} porn on AREA BOKEP`}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                   unoptimized

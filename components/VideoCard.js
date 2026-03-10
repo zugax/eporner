@@ -31,7 +31,7 @@ export default function VideoCard({ video }) {
           {video.thumbnail && (
             <Image
               src={video.thumbnail}
-              alt={video.title}
+              alt={`${video.title || 'Video'} - Watch free ${video.categories?.[0] || 'adult'} video on AREA BOKEP`}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500 video-thumb"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

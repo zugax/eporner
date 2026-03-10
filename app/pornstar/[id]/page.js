@@ -9,13 +9,47 @@ export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }) {
   const pornstar = await getPornstarById(params.id)
+  const baseUrl = 'https://pornxsearch.dpdns.org'
+  const pornstarUrl = `${baseUrl}/pornstar/${params.id}`
+  
+  // Structured data for pornstar
+  const structuredData = pornstar ? {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": pornstar.name,
+    "description": pornstar.bio || `Watch videos featuring ${pornstar.name} on AREA BOKEP`,
+    "url": pornstarUrl,
+    "image": pornstar.thumb || null,
+    "knowsAbout": pornstar.videos ? ` ${pornstar.videos} videos` : null,
+    "interactionStatistic": pornstar.views ? {
+      "@type": "InteractionCounter",
+      "interactionType": "https://schema.org/WatchAction",
+      "userInteractionCount": pornstar.views
+    } : null
+  } : null
+  
   return {
-    title: `${pornstar?.name || 'Pornstar'} - AREA BOKEP`,
-    description: `Watch videos featuring ${pornstar?.name || 'pornstar'} on AREA BOKEP`
+    title: pornstar?.name ? `${pornstar.name} - ${pornstar.videos || 0} Videos | AREA BOKEP` : 'Pornstar | AREA BOKEP',
+    description: pornstar?.bio || `Watch videos featuring ${pornstar?.name || 'pornstar'} on AREA BOKEP - Free HD adult videos`,
+    keywords: [pornstar?.name, 'pornstar', 'adult video', 'free porn', 'hd porn'],
+    openGraph: {
+      title: pornstar?.name ? `${pornstar.name} - ${pornstar.videos || 0} Videos | AREA BOKEP` : 'Pornstar | AREA BOKEP',
+      description: pornstar?.bio || `Watch videos featuring ${pornstar?.name || 'pornstar'} on AREA BOKEP`,
+      url: pornstarUrl,
+      type: 'profile',
+      images: pornstar?.thumb ? [pornstar.thumb] : []
+    },
+    alternates: {
+      canonical: pornstarUrl
+    },
+    other: structuredData ? {
+      'script:ld+json': JSON.stringify(structuredData)
+    } : {}
   }
 }
 
 export default async function PornstarPage({ params, searchParams }) {
+  const baseUrl = 'https://pornxsearch.dpdns.org'
   const pornstar = await getPornstarById(params.id)
   
   if (!pornstar) {
@@ -31,6 +65,54 @@ export default async function PornstarPage({ params, searchParams }) {
 
   return (
     <div className="container mx-auto px-4 py-6">
+      {/* JSON-LD Structured Data for Pornstar */}
+      <Script
+        id="pornstar-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": pornstar.name,
+            "description": pornstar.bio || `Watch videos featuring ${pornstar.name} on AREA BOKEP`,
+            "url": `${baseUrl}/pornstar/${params.id}`,
+            "image": pornstar.thumb || null
+          })
+        }}
+      />
+
+      {/* BreadcrumbList Schema */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": baseUrl
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Pornstars",
+                "item": `${baseUrl}/pornstars`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": pornstar.name,
+                "item": `${baseUrl}/pornstar/${params.id}`
+              }
+            ]
+          })
+        }}
+      />
+
       {/* Pornstar Profile - Eporner style */}
       <div className="bg-dark-secondary rounded-lg p-6 mb-8 shadow-lg">
         <div className="flex flex-col md:flex-row gap-6">
@@ -38,7 +120,7 @@ export default async function PornstarPage({ params, searchParams }) {
             {pornstar.thumb ? (
               <Image
                 src={pornstar.thumb}
-                alt={pornstar.name}
+                alt={`${pornstar.name} - Watch ${pornstar.videos || 0} videos on AREA BOKEP`}
                 fill
                 className="object-cover"
                 unoptimized

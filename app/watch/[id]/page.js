@@ -5,6 +5,100 @@ import Script from 'next/script'
 
 export const dynamic = 'force-dynamic'
 
+// Generate metadata for SEO with JSON-LD
+export async function generateMetadata({ params }) {
+  const { id } = params
+  
+  let video = null
+  try {
+    video = await getVideoById(id)
+  } catch (error) {
+    console.error('generateMetadata error:', error)
+  }
+
+  const baseUrl = 'https://pornxsearch.dpdns.org'
+  const videoUrl = `${baseUrl}/watch/${id}`
+  
+  // Format duration for ISO 8601 duration
+  const formatISODuration = (seconds) => {
+    if (!seconds) return null
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `PT${mins}M${secs}S`
+  }
+
+  // Build structured data for video
+  const structuredData = video ? {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": video.title || 'Video',
+    "description": video.description || `Watch ${video.title} on AREA BOKEP - Free HD porn videos`,
+    "thumbnailUrl": video.thumbs?.[0] || null,
+    "uploadDate": video.added ? new Date(video.added).toISOString() : null,
+    "duration": formatISODuration(video.duration),
+    "contentUrl": video.embed || videoUrl,
+    "embedUrl": video.embed || null,
+    "publisher": {
+      "@type": "Organization",
+      "name": "AREA BOKEP",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${baseUrl}/icon.svg`
+      }
+    },
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "interactionType": "https://schema.org/WatchAction",
+      "userInteractionCount": video.views || 0
+    },
+    "keywords": video.tags?.join(', ') || video.categories?.join(', ') || 'adult video, free porn'
+  } : null
+
+  return {
+    title: video?.title ? `${video.title} - Watch Free HD Video | AREA BOKEP` : 'Watch Video | AREA BOKEP',
+    description: video?.description || `Watch free HD porn video on AREA BOKEP. ${video?.title || 'Best adult videos updated daily.'}`,
+    keywords: video?.tags || video?.categories || ['bokep', 'free porn', 'hd video'],
+    openGraph: {
+      title: video?.title || 'Watch Video | AREA BOKEP',
+      description: video?.description || 'Watch free HD porn videos on AREA BOKEP',
+      url: videoUrl,
+      type: 'video.other',
+      video: {
+        tag: video?.tags || [],
+        duration: formatISODuration(video?.duration),
+        release_date: video?.added,
+        actor: video?.pornstars?.map(ps => ({
+          '@type': 'Person',
+          name: typeof ps === 'string' ? ps : ps.name
+        }))
+      },
+      images: video?.thumbs ? video.thumbs.map(thumb => ({
+        url: thumb,
+        width: 640,
+        height: 360,
+        alt: video.title
+      })) : []
+    },
+    twitter: {
+      card: 'player',
+      title: video?.title || 'Watch Video | AREA BOKEP',
+      description: video?.description || 'Watch free HD porn videos',
+      player: {
+        url: video?.embed || videoUrl,
+        width: 640,
+        height: 360
+      },
+      images: video?.thumbs || []
+    },
+    alternates: {
+      canonical: videoUrl
+    },
+    other: structuredData ? {
+      'script:ld+json': JSON.stringify(structuredData)
+    } : {}
+  }
+}
+
 export default async function WatchPage({ params }) {
   const { id } = params
   console.log('WatchPage id:', id)
@@ -59,6 +153,68 @@ export default async function WatchPage({ params }) {
 
   return (
     <div className="container mx-auto px-4 py-6">
+      {/* JSON-LD Structured Data for Video */}
+      {video && (
+        <Script
+          id="video-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": video.title,
+              "description": video.description || `Watch ${video.title} on AREA BOKEP`,
+              "thumbnailUrl": video.thumbs?.[0],
+              "uploadDate": video.added ? new Date(video.added).toISOString() : null,
+              "duration": formatDuration(video.duration) ? `PT${Math.floor(video.duration/60)}M${video.duration%60}S` : null,
+              "contentUrl": video.embed,
+              "embedUrl": video.embed,
+              "publisher": {
+                "@type": "Organization",
+                "name": "AREA BOKEP"
+              },
+              "interactionStatistic": {
+                "@type": "InteractionCounter",
+                "interactionType": "https://schema.org/WatchAction",
+                "userInteractionCount": video.views || 0
+              }
+            })
+          }}
+        />
+      )}
+
+      {/* BreadcrumbList Schema */}
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": baseUrl
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": video?.categories?.[0] ? video.categories[0].charAt(0).toUpperCase() + video.categories[0].slice(1) : 'Videos',
+                "item": video?.categories?.[0] ? `${baseUrl}/category/${video.categories[0]}` : `${baseUrl}/latest`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": video?.title?.substring(0, 50) || 'Video',
+                "item": videoUrl
+              }
+            ]
+          })
+        }}
+      />
+
       {/* Video Player - Eporner style */}
       <div className="mb-6">
         <div className="bg-black rounded-lg overflow-hidden shadow-xl">

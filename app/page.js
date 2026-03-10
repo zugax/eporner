@@ -2,12 +2,33 @@ import { getVideos, getCategories } from '@/lib/eporner'
 import VideoGrid from '@/components/VideoGrid'
 import Link from 'next/link'
 import Image from 'next/image'
+import Script from 'next/script'
 
 export const dynamic = 'force-dynamic'
+
+const BASE_URL = 'https://pornxsearch.dpdns.org'
 
 export const metadata = {
   title: 'AREA BOKEP - Video Bokep Indonesia Indo Hijab Japan Gratis HD',
   description: 'Nonton video bokep indonesia, bokep indo, bokep hijab, bokep jepang (jav), bokep asian gratis kualitas HD terbaru.',
+  other: {
+    'script:ld+json': JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AREA BOKEP",
+      "url": BASE_URL,
+      "description": "Nonton video bokep indonesia, bokep indo, bokep hijab, bokep jepang (jav) gratis kualitas HD.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "AREA BOKEP"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${BASE_URL}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    })
+  }
 }
 
 export default async function Home() {
@@ -41,6 +62,30 @@ export default async function Home() {
 
   return (
     <div className="container mx-auto px-4 py-6">
+      {/* JSON-LD Structured Data for Website */}
+      <Script
+        id="website-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "AREA BOKEP",
+            "url": BASE_URL,
+            "description": "Nonton video bokep indonesia, bokep indo, bokep hijab, bokep jepang (jav) gratis kualitas HD.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "AREA BOKEP"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": `${BASE_URL}/search?q={search_term_string}`,
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }}
+      />
+
       {/* Trending Videos */}
       <VideoGrid 
         videos={trendingVideos} 
@@ -68,7 +113,7 @@ export default async function Home() {
               {cat.thumbs && cat.thumbs[0] ? (
                 <Image
                   src={cat.thumbs[0]}
-                  alt={cat.name}
+                  alt={`${cat.name} videos - Watch free ${cat.name} porn on AREA BOKEP`}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                   unoptimized

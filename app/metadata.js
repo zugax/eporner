@@ -2,7 +2,7 @@ import { headers } from 'next/headers';
 
 export async function generateMetadata() {
   const headersList = typeof headers === 'function' ? await headers() : {};
-  const host = headersList.host || headersList['x-forwarded-host'] || 'areabokep.me';
+  const host = headersList.host || headersList['x-forwarded-host'] || 'pornxsearch.dpdns.org';
   const hostname = host.replace(/^www\./, '');
   const baseUrl = `https://${hostname}`;
 
