@@ -1,4 +1,11 @@
-export default function robots() {
+import { headers } from 'next/headers';
+
+export async function robots() {
+  const headersList = await headers();
+  const host = headersList.get('host') || headersList.get('x-forwarded-host') || 'pornxsearch.dpdns.org';
+  const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'https';
+  const siteUrl = `${protocol}://${host}`;
+  
   return {
     rules: [
       {
@@ -29,8 +36,18 @@ export default function robots() {
         allow: '/',
         disallow: ['/api/'],
       },
+      {
+        userAgent: 'bingbot',
+        allow: '/',
+        disallow: ['/api/', '/admin/'],
+      },
+      {
+        userAgent: 'MSNBot',
+        allow: '/',
+        disallow: ['/api/'],
+      },
     ],
-    sitemap: 'https://areabokep.me/sitemap.xml',
-    host: 'https://areabokep.me',
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   }
 }
