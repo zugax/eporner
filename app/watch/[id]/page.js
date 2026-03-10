@@ -103,6 +103,9 @@ export default async function WatchPage({ params }) {
   const { id } = params
   console.log('WatchPage id:', id)
   
+  const baseUrl = 'https://pornxsearch.dpdns.org'
+  const videoUrl = `${baseUrl}/watch/${id}`
+  
   let video = null
   try {
     video = await getVideoById(id)
