@@ -3,6 +3,8 @@ import VideoCard from '@/components/VideoCard'
 import Link from 'next/link'
 import Script from 'next/script'
 
+export const dynamic = 'force-dynamic'
+
 export default async function WatchPage({ params }) {
   const { id } = params
   console.log('WatchPage id:', id)

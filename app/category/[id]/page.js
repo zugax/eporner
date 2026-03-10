@@ -4,6 +4,8 @@ import Pagination from '@/components/Pagination'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
+export const dynamic = 'force-dynamic'
+
 // Indonesian category name mappings
 const categoryNames = {
   'indonesian': 'Bokep Indonesia',

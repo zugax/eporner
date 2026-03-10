@@ -3,6 +3,8 @@ import VideoGrid from '@/components/VideoGrid'
 import Link from 'next/link'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'AREA BOKEP - Video Bokep Indonesia Indo Hijab Japan Gratis HD',
   description: 'Nonton video bokep indonesia, bokep indo, bokep hijab, bokep jepang (jav), bokep asian gratis kualitas HD terbaru.',

@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ params }) {
   const pornstar = await getPornstarById(params.id)
   return {

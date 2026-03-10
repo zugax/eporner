@@ -3,6 +3,8 @@ import VideoGrid from '@/components/VideoGrid'
 import Pagination from '@/components/Pagination'
 import Script from 'next/script'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata({ searchParams }) {
   const query = searchParams.q || ''
   return {
